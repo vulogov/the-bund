@@ -1,0 +1,5 @@
+// Here is single line comment
+## Double hashes also okay for a single line comment
+/*
+  Here is multiline comments
+*/

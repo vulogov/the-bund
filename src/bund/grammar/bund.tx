@@ -1,0 +1,56 @@
+Bund:
+  statements *= DataAssignment
+;
+
+//
+// Name of the data
+//
+DataName:
+  ID | STRING
+;
+DataType:
+  "module" | "data" | "history" | "env" | "data" | "var" | ArityDef
+;
+DataDef:
+  (dtype=DataType)? name=DataName
+;
+Arity:
+  "|" arity += ArityDef[","] "|"
+;
+ArityDef:
+  "num" | "str" | "list" | "dict" | "matrix" | "_"
+;
+
+//
+// Value of the data
+//
+DataValue:
+  data += DataValueTypes[',']
+;
+DataValueTypes:
+  BASETYPE | DataAssignment
+;
+
+//
+// Assignment of the data
+//
+DirectDataAssignmentOp:
+  "is" | "<-"
+;
+ReverseDataAssignmentOp:
+  "->"
+;
+
+DirectDataAssignment:
+  DataDef (arity=Arity)? DirectDataAssignmentOp DataValue
+;
+ReverseDataAssignment:
+  DataValue ReverseDataAssignmentOp (arity=Arity)? DataDef
+;
+
+DataAssignment:
+  DirectDataAssignment | ReverseDataAssignment
+;
+Comment:
+  /##.*$|\/\/.*$/|/\/\*(.|\n)*?\*\//
+;
