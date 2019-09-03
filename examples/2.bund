@@ -1,1 +1,44 @@
+// Defining main entry into a script
+MainEntry <- "main.Main"
 
+[main>
+  [A>
+    data is
+      42 as Truth,
+      SomeList is [1,2,3],
+      SomeDict is { A <- 1, 2 as B, [1,2,3] as "C" },
+      theRecord <- |2,2| ?{ A, B, "->"},
+      TaDa <- `( 2 2 )
+    ;;
+  ;;
+  env is
+    monad is IO, SYS;
+    import time;
+    A <- {A is A, B <- B, "C" -> C};
+    - D is D V -> V
+  ;;
+  history is
+     - name is "Vladimir Ulogov" email <- "vulogov@linkein.com"
+  ;;
+  data is
+    Answer <- 42,
+    Is <- ABC,
+    B <- True,
+    StrData <- "Hello",
+    PI <- 3.0,
+    Double <- `(dup *),
+    Add1 <- `( 1 + ),
+    Main <- (
+      2
+      2
+      :A:Truth
+      +
+    )
+  ;;
+  var is
+    theVar <- 0
+  ;;
+  pipeline Main is
+      [InChan] | A | B | ( C, D) | :A:TaDa | [OutChan]
+  ;;
+;;
