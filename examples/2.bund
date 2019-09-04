@@ -32,6 +32,9 @@ MainEntry <- "main.Main"
       True
       ?( 2 2 + )
     ),
+    GetB <- `(
+      `( 2 2 +).
+    ),
     Main <- (
       2
       2

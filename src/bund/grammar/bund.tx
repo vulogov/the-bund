@@ -170,6 +170,9 @@ CodeBlockDef:
 CodeBlockRefDef:
   "`(" words *= CodeWords ")"
 ;
+RunCodeBlockOp:
+  "."
+;
 CondCodeBlockDef:
   "?(" words *= CodeWords ")"
 ;
@@ -180,7 +183,7 @@ CompareOp:
   "=" | "<>" | ">" | "<" | ">=" | "<=" | "is"
 ;
 CodeWords:
-  DataDefinition | SpecialWords | FQWord | LazyEvalWordDef | LazyEvalWordOp | CondCodeBlockDef
+  DataDefinition | SpecialWords | FQWord | LazyEvalWordDef | LazyEvalWordOp | CondCodeBlockDef | RunCodeBlockOp
 ;
 DataDefinition:
   BASETYPE | ListDef | DictDef | RecordDef | CodeBlockDef | CodeBlockRefDef
