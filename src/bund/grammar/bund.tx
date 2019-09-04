@@ -150,7 +150,7 @@ LazyEvalWordDef:
   ":[" name=BundExecWordDef "]"
 ;
 LazyEvalWordOp:
-  "[;]"
+  "!"
 ;
 ListDef:
   "[" data *= DataDefinition[","] "]"
@@ -165,10 +165,10 @@ RecordDef:
   "?{" data *= NameDef[","] "}"
 ;
 CodeBlockDef:
-  "(" words *= CodeWords ")"
+  "(" words *= ParametrizedCodeWords ")"
 ;
 CodeBlockRefDef:
-  "`(" words *= CodeWords ")"
+  "`(" words *= ParametrizedCodeWords ")"
 ;
 RunCodeBlockOp:
   "."
@@ -184,6 +184,9 @@ CompareOp:
 ;
 CodeWords:
   DataDefinition | SpecialWords | FQWord | LazyEvalWordDef | LazyEvalWordOp | CondCodeBlockDef | RunCodeBlockOp
+;
+ParametrizedCodeWords:
+  data=CodeWords arity=Arity?
 ;
 DataDefinition:
   BASETYPE | ListDef | DictDef | RecordDef | CodeBlockDef | CodeBlockRefDef

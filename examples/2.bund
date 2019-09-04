@@ -38,12 +38,12 @@ MainEntry <- "main.Main"
     Main <- (
       2
       2
-      :A:Truth
+      :A:Truth | 2 |
       +
       :[Add1]
         2
         +
-      [;]
+      !
     )
   ;;
   var is
