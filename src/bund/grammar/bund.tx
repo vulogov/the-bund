@@ -143,6 +143,15 @@ PipelineGroupDef:
 FQWord:
   ":" path += NameDef[":"]
 ;
+BundExecWordDef:
+  NameDef | FQWord
+;
+LazyEvalWordDef:
+  ":[" name=BundExecWordDef "]"
+;
+LazyEvalWordOp:
+  "[;]"
+;
 ListDef:
   "[" data *= DataDefinition[","] "]"
 ;
@@ -161,11 +170,17 @@ CodeBlockDef:
 CodeBlockRefDef:
   "`(" words *= CodeWords ")"
 ;
-FilterBlockDef:
-  "/" "/"
+CondCodeBlockDef:
+  "?(" words *= CodeWords ")"
+;
+LogicalOp:
+  "||" | "&&" | "^" | "and" | "or" | "not"
+;
+CompareOp:
+  "=" | "<>" | ">" | "<" | ">=" | "<=" | "is"
 ;
 CodeWords:
-  !KeyWords DataDefinition | SpecialWords | FQWord
+  DataDefinition | SpecialWords | FQWord | LazyEvalWordDef | LazyEvalWordOp | CondCodeBlockDef
 ;
 DataDefinition:
   BASETYPE | ListDef | DictDef | RecordDef | CodeBlockDef | CodeBlockRefDef

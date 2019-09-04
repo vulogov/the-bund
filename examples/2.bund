@@ -28,11 +28,19 @@ MainEntry <- "main.Main"
     PI <- 3.0,
     Double <- `(dup *),
     Add1 <- `( 1 + ),
+    IfA <- `(
+      True
+      ?( 2 2 + )
+    ),
     Main <- (
       2
       2
       :A:Truth
       +
+      :[Add1]
+        2
+        +
+      [;]
     )
   ;;
   var is
