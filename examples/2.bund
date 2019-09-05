@@ -38,7 +38,7 @@ MainEntry <- "main.Main"
     Main <- (
       2
       2
-      :A:Truth | 2 |
+      :A:Truth /2,2/
       +
       :[Add1]
         2

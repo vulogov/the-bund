@@ -186,7 +186,7 @@ CodeWords:
   DataDefinition | SpecialWords | FQWord | LazyEvalWordDef | LazyEvalWordOp | CondCodeBlockDef | RunCodeBlockOp
 ;
 ParametrizedCodeWords:
-  data=CodeWords arity=Arity?
+  data=CodeWords ("/" arity*=DataDefinition[","] "/")?
 ;
 DataDefinition:
   BASETYPE | ListDef | DictDef | RecordDef | CodeBlockDef | CodeBlockRefDef
