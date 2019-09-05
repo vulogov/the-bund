@@ -33,10 +33,16 @@ SpecialWords1:
   "<<" | ">>" | "*" | "-" | "**" | "***" | "--" | "---" | "><" | "<>"
 ;
 SpecialWords2:
-  "+" | "++" | "+++" | "&&" | "||"
+  "+" | "++" | "+++"
+;
+LogicalOp:
+  "||" | "&&" | "^" | "and" | "or" | "not"
+;
+CompareOp:
+  "=" | "<>" | ">" | "<" | ">=" | "<=" | "is"
 ;
 SpecialWords:
-  SpecialWords1 | SpecialWords2
+  SpecialWords1 | SpecialWords2 | LogicalOp | CompareOp
 ;
 
 //
@@ -176,14 +182,8 @@ RunCodeBlockOp:
 CondCodeBlockDef:
   "?(" words *= CodeWords ")"
 ;
-LogicalOp:
-  "||" | "&&" | "^" | "and" | "or" | "not"
-;
-CompareOp:
-  "=" | "<>" | ">" | "<" | ">=" | "<=" | "is"
-;
 CodeWords:
-  DataDefinition | SpecialWords | FQWord | LazyEvalWordDef | LazyEvalWordOp | CondCodeBlockDef | RunCodeBlockOp
+  ! KeyWords | DataDefinition | SpecialWords | FQWord | LazyEvalWordDef | LazyEvalWordOp | CondCodeBlockDef | RunCodeBlockOp
 ;
 ParametrizedCodeWords:
   data=CodeWords ("/" arity*=DataDefinition[","] "/")?
