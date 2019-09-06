@@ -24,10 +24,12 @@ MainEntry <- "main.Main"
     Answer <- 42,
     Is <- ABC,
     B <- True,
+    U <- "Привет",
     StrData <- "Hello",
     PI <- 3.0,
     Double <- `(dup *),
     Add1 <- `( 1 + ),
+    U <- #[Double @ 1],
     IfA <- `(
       True
       ?( 2 2 + )
@@ -35,9 +37,10 @@ MainEntry <- "main.Main"
     GetB <- `(
       `( 2 2 +).
     ),
-    Main <- (
+    Main <- `(
       2
       2
+      "Строка Unicode"
       :A:Truth /2,2/
       +
       :[Add1]

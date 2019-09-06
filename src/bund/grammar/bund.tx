@@ -44,7 +44,6 @@ CompareOp:
 SpecialWords:
   SpecialWords1 | SpecialWords2 | LogicalOp | CompareOp
 ;
-
 //
 // theBund operations definition
 //
@@ -152,6 +151,9 @@ FQWord:
 BundExecWordDef:
   NameDef | FQWord
 ;
+CurryDef:
+  name = "#[" BundExecWordDef "@" param=DataDefinition "]"
+;
 LazyEvalWordDef:
   ":[" name=BundExecWordDef "]"
 ;
@@ -189,7 +191,7 @@ ParametrizedCodeWords:
   data=CodeWords ("/" arity*=DataDefinition[","] "/")?
 ;
 DataDefinition:
-  BASETYPE | ListDef | DictDef | RecordDef | CodeBlockDef | CodeBlockRefDef
+  BASETYPE | ListDef | DictDef | RecordDef | CodeBlockDef | CodeBlockRefDef | CurryDef
 ;
 //
 // Namespace definitions
