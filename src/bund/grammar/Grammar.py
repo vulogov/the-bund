@@ -221,5 +221,5 @@ Comment:
 
 """
 
-def bund_grammar()
+def bund_grammar():
     return GRAMMAR

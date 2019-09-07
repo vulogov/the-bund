@@ -1,2 +1,2 @@
-import Grammar
-import MetaModel
+import bund.grammar.Grammar
+import bund.grammar.MetaModel
